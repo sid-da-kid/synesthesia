@@ -1,0 +1,2 @@
+# synesthesia
+AI music visualiser
