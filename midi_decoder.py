@@ -1,5 +1,4 @@
 import mido
-import rtmidi
 from mido import Message
 msg = Message('note_on', note=60)
 print(msg.type)
