@@ -7,4 +7,4 @@ pygame.mixer.music.play()
 while pygame.mixer.music.get_busy():
     pygame.time.wait(1000)
 mid = MidiFile(mid_file, clip=True)
-print(mid)
+print(len(mid.tracks))
