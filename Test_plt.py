@@ -13,7 +13,7 @@ classes = np.random.randint(0, 3, 200)
 #plt.scatter(x, y, c=classes, cmap= "Spectral")
 
 # Custom:
-custom_cmap = matplotlib.colors.ListedColormap(["red", "purple", "yellow"])
+custom_cmap = matplotlib.colors.ListedColormap(["red", "purple", "green"])
 plt.scatter(x, y, c=classes, cmap=custom_cmap)
 
 plt.show()
