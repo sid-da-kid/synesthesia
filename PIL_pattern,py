@@ -10,11 +10,11 @@ class Deformer():
 
         topleft = ((0, 0, w // 2, h // 2),(0, 0, 0, h, w // 2, h, w // 2, 0))
         topright = ((w // 2, 0, w, h // 2),(w // 2, 0, w // 2, h, 0, h, 0, 0))
-        bottomleft = ((0, h // 2, w // 2, h // 2),())
-        bottomright = ((w // 2, h // 2, w, h),())
+        bottomleft = ((0, h // 2, w // 2, h),(0, h, 0, 0, w // 2, 0, w // 2, h))
+        bottomright = ((w // 2, h // 2, w, h),(w // 2, h, w // 2, 0, 0, 0, 0, h))
 
         # return all the shapes
-        return [topleft, topright,]
+        return [topleft, topright, bottomleft, bottomright]
 # image import
 image = Image.open('img1.jpg')
 deform = ImageOps.deform(image, Deformer())

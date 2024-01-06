@@ -19,7 +19,7 @@ image_smooth_more = image.filter(ImageFilter.SMOOTH_MORE)
 image_boxblur = image.filter(ImageFilter.BoxBlur(radius = 5))
 
 
-image_boxblur.show()
+image_smooth.show()
 
 
 
