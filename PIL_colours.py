@@ -1,20 +1,18 @@
-from PIL import Image, ImageEnhance
+from PIL import Image
+import numpy, array
 
-example_image1 = Image.open('img1.jpg')
+img = Image.open('img1.jpg')
 
-###############################
-# Analyse picture information #
-###############################
-
-width, height = example_image1.size
+# Get picture information 
+width, height = img.size
 print(width, height)
+print(img.getpixel((0,0)))
 
-print(example_image1.getpixel((0,0)))
-
-
+print(img.mode)
+print(img.getbands())
 
 # display image
-example_image1.show()
+img.show()
 
 
 
