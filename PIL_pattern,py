@@ -8,23 +8,15 @@ class Deformer():
         # define a rectangle in the new image
         # target_rect = (0,0,w,h) # top left, bottom right
 
-        left = ((0, 0, w // 2, h),(0, 0, 0, h, w // 2, h, w // 2, 0))
-        flip_hor = ((w // 2, 0, w, h),(w // 2, 0, w // 2, h, 0, h, 0, 0))
-        flip_ver = ((w // 2, 0, w, h),(w // 2, h, w // 2, 0, w, 0, w, h))
-        
+        topleft = ((0, 0, w // 2, h // 2),(0, 0, 0, h, w // 2, h, w // 2, 0))
+        topright = ((w // 2, 0, w, h // 2),(w // 2, 0, w // 2, h, 0, h, 0, 0))
+        bottomleft = ((0, h // 2, w // 2, h // 2),())
+        bottomright = ((w // 2, h // 2, w, h),())
 
         # return all the shapes
-        return [left,flip_ver]
-    
+        return [topleft, topright,]
 # image import
 image = Image.open('img1.jpg')
 deform = ImageOps.deform(image, Deformer())
 deform.show()
-
-
-
-
-
-
-
 
