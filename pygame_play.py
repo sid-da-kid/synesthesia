@@ -1,6 +1,6 @@
 import pygame
 from pygame import mixer
-mp3_file = "HappySample.mp3"
+mp3_file = "arcade.mp3"
 pygame.init()
 mixer.music.load(mp3_file)
 mixer.music.play()
