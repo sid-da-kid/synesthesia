@@ -2,23 +2,23 @@ import wave
 import numpy as np
 import matplotlib.pyplot as plt
 
-aud = wave.open("arcade.wav")
+aud = wave.open("arcade.wav", "r")
 
 sample_freq = aud.getframerate()
-n_samples = aud.getnframes()
-signal_wave = aud.readframes(-1)
+frames = aud.getnframes()
+audio_wave = aud.readframes(-1)
 
 aud.close()
 
-t_audio = n_samples / sample_freq
-print(t_audio)
+time = frames / sample_freq
 
-signal_array = np.frombuffer(signal_wave, dtype=np.int16)
-times = np.linspace(0, t_audio, num=n_samples)
+audio_array = np.frombuffer(audio_wave, dtype=np.int16)
+times = np.linspace(0, time, num=frames)
 
 plt.figure(figsize=(15, 5))
-plt.plot(times, signal_array)
-plt.title("Audio Signal")
-
-
-
+plt.plot(times, audio_array)
+plt.title("Waveform")
+plt.xlabel("Amplitude")
+plt.ylabel("Time (s)")
+plt.xlim(0, time)
+plt.show
