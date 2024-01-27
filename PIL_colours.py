@@ -1,5 +1,5 @@
 from PIL import Image
-import numpy, array
+import numpy as np
 
 img = Image.open('img1.jpg')
 

@@ -1,7 +1,7 @@
 import numpy
 import wave
 
-aud = wave.open("arcade.wav")
+aud = wave.open("triumph.wav")
 
 print("Number of channels: ", aud.getnchannels())
 print("Sample width: ", aud.getsampwidth())
