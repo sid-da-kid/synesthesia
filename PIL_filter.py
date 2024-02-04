@@ -15,11 +15,10 @@ image_emboss = image.filter(ImageFilter.EMBOSS)
 image_sharp = image.filter(ImageFilter.SHARPEN)
 image_smooth = image.filter(ImageFilter.SMOOTH)
 image_smooth_more = image.filter(ImageFilter.SMOOTH_MORE)
-
 image_boxblur = image.filter(ImageFilter.BoxBlur(radius = 5))
 
 
-image_smooth.show()
+image_boxblur.show()
 
 
 
