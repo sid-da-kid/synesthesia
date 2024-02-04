@@ -5,7 +5,7 @@ from PIL import Image, ImageFilter, ImageEnhance
 aud = wave.open("triumph.wav")
 
 sample_freq = aud.getframerate()
-frames = aud.getnframes()
+frames = aud.readframes(aud.getnframes())
 audio_wave = aud.readframes(-1)
 time = frames / sample_freq
 
@@ -22,10 +22,13 @@ contrast_enhancer = ImageEnhance.Contrast(image)
 brightness_enhancer = ImageEnhance.Brightness(image)
 sharpness_enhancer = ImageEnhance.Sharpness(image)
 
-cont_value = print(abs(int((audio_array[25000]) / 10000)))
-# print(len(audio_array))
-image2 = contrast_enhancer.enhance(cont_value)
+# cont_value = print(sum(abs(int.from_bytes((audio_array[25000]) / 10000), byteorder='little', signed=True)))
+print(len(audio_array))
 
+cont_value = sum(abs(int.from_bytes(frames[i:i+time], byteorder='little', signed=True))
+                         for i in range(0, len(frames), time)) / (len(frames) / 50)
+
+image2 = contrast_enhancer.enhance(cont_value)
 image2.show
 
 
