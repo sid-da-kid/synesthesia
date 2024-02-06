@@ -29,32 +29,24 @@ def update(frame):
     # Read a frame of audio data
     aud_data = np.frombuffer(aud.readframes(1), dtype=np.int16)
 
+  
+    # Process the audio data to determine the contrast adjustment
     color_enhancer = ImageEnhance.Color(image)
     contrast_enhancer = ImageEnhance.Contrast(image)
     brightness_enhancer = ImageEnhance.Brightness(image)
     sharpness_enhancer = ImageEnhance.Sharpness(image)
-
-
+    
     print(f"Total frames in audio: {sample_width}")
 
-    # Using a specific frame
-    value = abs(frames[10000])
-
-    # Using the mean amplitude
-    # cont_value = sum(abs(int.from_bytes(frames[i:i+sample_width], byteorder='little', signed=True)) 
-    #                          for i in range(0, len(frames), sample_width)) / len(frames)
-
-    image2 = color_enhancer.enhance(value)
-    image2.show()
-
-    # Process the audio data to determine the contrast adjustment
-    # Your audio processing logic goes here
-
     # Update the image based on the audio processing result
-    # Modify the image using Pillow or any other image processing library
-    # Update img here with the processed image
+    value = aud_data
 
-    imgplot.set_array(image)
+    # Modify the image using Pillow or any other image processing library
+
+    # Update 'image' here with the processed image
+    image2 = color_enhancer.enhance(value)
+
+    imgplot.set_array(image2)
 
 # Create the animation
 animation = FuncAnimation(fig, update, frames=num_frames, interval=1000/frame_rate, repeat=False)
