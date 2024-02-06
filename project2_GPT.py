@@ -49,6 +49,6 @@ def update(frame):
     imgplot.set_array(image2)
 
 # Create the animation
-animation = FuncAnimation(fig, update, frames=num_frames, interval=1000/frame_rate, repeat=False)
+animation = FuncAnimation(fig, update, frames=num_frames, interval=20, repeat=False)
 
 plt.show()
