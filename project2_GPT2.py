@@ -25,7 +25,7 @@ def update(frame):
     current_time = frame / frame_rate
 
     # Read a frame of audio data
-    audio_data = np.frombuffer(audio_file.readframes(1), dtype=np.int16)
+    audio_data = np.frombuffer(audio_file.readframes(audio_file.getnframes()), dtype=np.int16)
 
     # Normalize the audio data to the range [-1, 1]
     normalized_audio = audio_data / np.iinfo(np.int16).max
@@ -42,6 +42,6 @@ def update(frame):
     imgplot.set_array(processed_img)
 
 # Create the animation
-animation = FuncAnimation(fig, update, frames=num_frames, interval=1000/frame_rate, repeat=False)
+animation = FuncAnimation(fig, update, frames=num_frames, interval=20, repeat=False)
 
 plt.show()
