@@ -27,13 +27,13 @@ sharpness_enhancer = ImageEnhance.Sharpness(image)
 print(f"Total frames in audio: {sample_width}")
 
 # Using a specific frame
-value = abs(frames[10000])
+value = abs(frames[50000])
 
 # Using the mean amplitude
 # cont_value = sum(abs(int.from_bytes(frames[i:i+sample_width], byteorder='little', signed=True)) 
 #                          for i in range(0, len(frames), sample_width)) / len(frames)
 
-image2 = color_enhancer.enhance(value)
+image2 = contrast_enhancer.enhance(value)
 image2.show()
 
 
