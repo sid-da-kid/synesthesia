@@ -8,3 +8,5 @@ print("Parameters: ", aud.getparams())
 aud_time = aud.getnframes() / aud.getframerate()
 print(aud_time)
 
+aud.getparams()
+
