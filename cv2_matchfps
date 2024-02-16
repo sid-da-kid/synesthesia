@@ -1,0 +1,59 @@
+import cv2
+import pygame
+import time
+
+# Initialize Pygame
+pygame.init()
+
+# Set the video file and initialize the video capture
+video_file = 'Vid2.mp4'
+video = cv2.VideoCapture(video_file)
+
+# Get video properties
+cv2.namedWindow("video", cv2.WINDOW_NORMAL)
+frame_width = int(video.get(cv2.CAP_PROP_FRAME_WIDTH))
+frame_height = int(video.get(cv2.CAP_PROP_FRAME_HEIGHT))
+duration = int(video.get(cv2.CAP_PROP_FRAME_COUNT))
+fps = video.get(cv2.CAP_PROP_FPS)
+print(f"Video total frames: {duration} ")
+print(f"Video duration: {duration / fps} ")
+print(f"Video fps: {fps} ")
+
+# Set the desired playback speed (adjust as needed)
+desired_fps = 30
+speed_ratio = desired_fps / fps
+
+# Set up Pygame audio
+pygame.mixer.init()
+pygame.mixer.music.load('PinkPanther30.wav')  # Replace with your audio file
+pygame.mixer.music.set_volume(1.0)
+
+# Get the duration of the audio
+audio_duration = pygame.mixer.Sound('PinkPanther30.wav').get_length()
+
+# Start playing the audio with the calculated delay
+pygame.mixer.music.play(0, start=0.0)
+audio_start_time = time.time()
+
+while video.isOpened():
+    ret, frame = video.read()
+    if not ret:
+        break
+
+    # Adjust video playback speed
+    time.sleep(1 / (fps * speed_ratio))
+
+    # Your video processing code here
+
+    cv2.imshow('Video', frame)
+
+    if cv2.waitKey(1) & 0xFF == ord('q'):
+        break
+
+# Release resourcesqq
+video.release()
+cv2.destroyAllWindows()
+
+# Wait for the audio to finish playing
+pygame.mixer.music.stop()
+pygame.quit()
